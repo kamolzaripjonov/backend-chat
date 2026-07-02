@@ -7,10 +7,10 @@ export const createAdmin = async () => {
         await connectDB();
 
         const adminData = {
-            email: process.env.ADMIN_EMAIL || 'admin@gmail.com',
-            username: process.env.ADMIN_USERNAME || 'admin',
-            password: process.env.ADMIN_PASSWORD || 'admin1234',
-            name: process.env.ADMIN_NAME || 'Super Admin'
+            email: process.env.ADMIN_EMAIL || 'admin@social.media',
+            username: process.env.ADMIN_USERNAME || 'codenation',
+            password: process.env.ADMIN_PASSWORD || 'codenation2026',
+            name: process.env.ADMIN_NAME || 'Codenation Admin'
         };
 
         const existingAdmin = await User.findOne({
