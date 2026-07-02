@@ -51,7 +51,25 @@ const userSchema = new mongoose.Schema({
     avatar: {type: String, default: null},
     isActive: {type: Boolean, default: true},
     online: {type: Boolean, default: false},
-    lastSeen: {type: Date, default: Date.now}
+    lastSeen: {type: Date, default: Date.now},
+    isPrivate: {type: Boolean, default: false},
+    savedPosts: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    }],
+    stats: {
+        posts: {type: Number, default: 0},
+        followers: {type: Number, default: 0},
+        following: {type: Number, default: 0},
+        stories: {type: Number, default: 0}
+    },
+    notificationSettings: {
+        emailNotifications: {type: Boolean, default: true},
+        pushNotifications: {type: Boolean, default: true},
+        messageNotifications: {type: Boolean, default: true},
+        followNotifications: {type: Boolean, default: true},
+        likeNotifications: {type: Boolean, default: true}
+    }
 }, {timestamps: true});
 
 userSchema.pre('save', async function (next) {
